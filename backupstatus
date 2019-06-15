@@ -1,0 +1,15 @@
+let aboutBackup = (deploymentid, backupid, options) => {  
+    fetch(`${apibase}/deployments/${deploymentid}/backups/${backupid}`, { headers: apiheaders })
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (backup) {
+            console.log(`Backup ID: ${backup.id}
+Type:      ${backup.type}  
+Status:    ${backup.status}  
+Base Name: ${backup.name}  
+Download:  ${backup.download_link}`);  
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
